@@ -6,6 +6,7 @@ import starlightSidebarTopics from 'starlight-sidebar-topics';
 
 // https://astro.build/config
 export default defineConfig({
+    site: "https://reaxium.reysin.fr",
     integrations: [
         starlight({
             plugins: [
