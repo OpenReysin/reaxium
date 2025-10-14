@@ -1,7 +1,19 @@
+<a href="https://reysin.fr">
+  <img align="right" width="92" height="92" title="Nano Stores logo" src="./assets/logo_reysin.png">
+</a>
+
 # 🧠 Reaxium Monorepo
+
+---
 
 > Reaxium is a **framework-agnostic reactive state management system**.  
 > Tiny and composable.
+
+---
+
+<img src="./assets/logo_reysin.png" alt="" width="30" height="30" />  Made at <b><a href="https://reysin.fr">Reysin</a></b>, <b>software creation</b>, <b>consulting</b>, and <b>help enterprise in IT</b>.
+
+---
 
 This monorepo contains multiple packages:
 
