@@ -80,51 +80,6 @@ function Counter() {
 
 ---
 
-## 🛠️ Monorepo Commands
-
-From the root directory (assuming **npm workspaces**):
-
-```bash
-# Install dependencies for all packages
-npm install
-
-# Build all packages
-npm run build --workspaces
-
-# Run tests for all packages
-npm test --workspaces
-
-# Run dev watch for a single package
-cd packages/core
-npm run dev
-```
-
----
-
-## 🧩 Testing
-
-Each package uses **Vitest**. Example:
-
-```bash
-cd packages/core
-npm run test
-```
-
----
-
-## 📦 Publishing
-
-Each package is versioned independently.
-Ensure `dist` is built and then publish:
-
-```bash
-cd packages/core
-npm run build
-npm publish
-```
-
----
-
 ## 🔮 Roadmap
 
 * [ ] Async atoms / derived stores
