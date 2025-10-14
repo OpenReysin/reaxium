@@ -11,17 +11,20 @@ export default defineConfig({
             plugins: [
                 starlightThemeBlack({
                     navLinks: [
-						{
-							label: 'Core',
-							link: '/core',
-						},
-						{
-							label: 'React',
-							link: '/react',
-						}
-					],
-                    footerText: //optional
-                        'Developped & maintained by [Reysin](https://reysin.fr). '
+                        {
+                            label: 'Core',
+                            link: '/core/intro',
+                        },
+                        {
+                            label: 'React',
+                            link: '/react',
+                        },
+                        {
+                            label: "VueJS",
+                            link: "/vue/"
+                        }
+                    ],
+                    footerText: 'Developped & maintained by [Reysin](https://reysin.fr). '
                 }),
                 starlightSidebarTopics([
                     {
@@ -29,18 +32,30 @@ export default defineConfig({
                         link: '/core/',
                         items: [
                             {
-								slug: "core",
+                                label: "Starting",
+                                autogenerate: {
+                                    directory: 'core/intro',
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        label: 'React',
+                        link: '/react/',
+                        items: [
+                            {
+                                slug: "react",
                             },
                         ]
                     },
                     {
-                        "label": 'React',
-                        "link": '/react/',
-						items: [
-							{
-								slug: "react",
-							},
-						]
+                        label: 'VueJS',
+                        link: '/vue/',
+                        items: [
+                            {
+                                slug: "vue",
+                            },
+                        ]
                     }
                 ])
             ],

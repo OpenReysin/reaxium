@@ -1,0 +1,57 @@
+---
+title: Installation
+description: Reaxium is available on npm and works with all modern package managers.
+---
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+---
+
+## Package Managers
+
+<Tabs>
+    <TabItem label="npm">
+        ```bash
+        npm install @reaxium/core
+        ```
+    </TabItem>
+    <TabItem label="pnpm">
+        ```bash
+        pnpm add @reaxium/core
+        ```
+    </TabItem>
+    <TabItem label="yarn">
+        ```bash
+        yarn add @reaxium/core
+        ```
+    </TabItem>
+    <TabItem label="bun">
+        ```bash
+        bun add @reaxium/core
+        ```
+    </TabItem>
+</Tabs>
+
+---
+
+## CDN (Browser)
+
+```html
+<script type="module">
+  import { atom, computed, watch } from 'https://unpkg.com/@reaxium/core?module';
+  // Use Reaxium here
+</script>
+```
+
+---
+
+## Requirements
+
+- Node.js 16+ (for npm/yarn/pnpm)
+- Modern browser (for CDN)
+
+---
+
+## Next Steps
+
+- [Quick Start](/intro/quick-start)
+- [Core Concepts](/core/atoms)
