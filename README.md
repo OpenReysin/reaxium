@@ -1,5 +1,13 @@
 # 🧠 Reaxium Monorepo
 
+![NPM Version](https://img.shields.io/npm/v/%40reaxium%2Fcore)
+![NPM Last Update](https://img.shields.io/npm/last-update/%40reaxium%2Fcore)
+![NPM Downloads](https://img.shields.io/npm/dw/%40reaxium%2Fcore)
+![NPM Type Definitions](https://img.shields.io/npm/types/%40reaxium%2Fcore)
+![GitHub contributors](https://img.shields.io/github/contributors/OpenReysin/reaxium)
+![GitHub License](https://img.shields.io/github/license/OpenReysin/reaxium)
+
+
 ---
 
 > Reaxium is a **framework-agnostic reactive state management system**.  
