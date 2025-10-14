@@ -11,6 +11,8 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "removeComments": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true
   },
   "include": ["src"]
 }

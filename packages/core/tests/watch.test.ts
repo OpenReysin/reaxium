@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
-import { atom } from "../src/atom";
-import { watch } from "../src/watch";
+import { atom } from "../src";
+import { watch } from "../src";
 
 describe("watch", () => {
   it("should react to atom changes", () => {

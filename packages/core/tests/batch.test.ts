@@ -1,5 +1,4 @@
 import { describe, it, expect, vi } from "vitest";
-import { atom } from "../src/atom";
 import { batch, enqueue } from "../src/batch";
 
 describe("batch", () => {

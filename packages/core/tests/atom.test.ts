@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { atom } from "../src/atom";
+import { atom } from "../src";
 
 describe("atom", () => {
   it("should get and set values", () => {
