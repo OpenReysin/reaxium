@@ -1,135 +1,140 @@
-# Turborepo starter
+# 🧠 Reaxium Monorepo
 
-This Turborepo starter is maintained by the Turborepo core team.
+> Reaxium is a **framework-agnostic reactive state management system**.  
+> Tiny, composable, and inspired by Nanostores, Jotai, and Vue reactivity.
 
-## Using this example
-
-Run the following command:
-
-```sh
-npx create-turbo@latest
-```
-
-## What's inside?
-
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
+This monorepo contains multiple packages:
 
 ```
-cd my-turborepo
 
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
+reaxium/
+├── packages/
+│   ├── core/       # Core reactive state engine (atoms, computed, watch, batch)
+│   ├── vue/        # Vue adapter
+│   └── react/      # React adapter
+├── package.json    # Monorepo root (workspace)
+└── tsconfig.json   # Shared TypeScript config
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
+````
+
+---
+
+## 📦 Packages
+
+### 1. `@reaxium/core`
+
+- Framework-agnostic reactive state primitives
+- Core features:
+  - `atom(initialValue)` — create reactive state
+  - `computed(fn, deps)` — derive reactive values
+  - `watch(store, callback)` — react to changes
+  - `batch(fn)` / `enqueue(fn)` — group updates
+- Usage:
+
+```ts
+import { atom, computed, watch, batch } from "@reaxium/core";
+
+const count = atom(0);
+const doubled = computed(() => count.get() * 2, [count]);
+
+watch(doubled, value => console.log("Doubled:", value));
+
+batch(() => {
+  count.set(1);
+  count.set(2);
+});
+````
+
+---
+
+### 2. `@reaxium/vue`
+
+* Vue 3 adapter using `ref` and `onUnmounted`
+* Usage:
+
+```ts
+import { atom } from "@reaxium/core";
+import { useStore } from "@reaxium/vue";
+
+const count = atom(0);
+const countRef = useStore(count);
 ```
 
-You can build a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+---
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
+### 3. `@reaxium/react`
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-```
+* React adapter using `useSyncExternalStore`
+* Usage:
 
-### Develop
+```ts
+import { atom } from "@reaxium/core";
+import { useStore } from "@reaxium/react";
 
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
+const count = atom(0);
+function Counter() {
+  const value = useStore(count);
+  return <button onClick={() => count.set(value + 1)}>Count: {value}</button>;
+}
 ```
 
-You can develop a specific package by using a [filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+---
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev --filter=web
+## 🛠️ Monorepo Commands
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-```
+From the root directory (assuming **npm workspaces**):
 
-### Remote Caching
+```bash
+# Install dependencies for all packages
+npm install
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+# Build all packages
+npm run build --workspaces
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+# Run tests for all packages
+npm test --workspaces
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
+# Run dev watch for a single package
+cd packages/core
+npm run dev
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+---
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+## 🧩 Testing
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
+Each package uses **Vitest**. Example:
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
+```bash
+cd packages/core
+npm run test
 ```
 
-## Useful Links
+---
 
-Learn more about the power of Turborepo:
+## 📦 Publishing
 
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+Each package is versioned independently.
+Ensure `dist` is built and then publish:
+
+```bash
+cd packages/core
+npm run build
+npm publish
+```
+
+---
+
+## 🔮 Roadmap
+
+* [ ] Async atoms / derived stores
+* [ ] Middleware support (logging, persistence)
+* [ ] DevTools for reactive debugging
+* [ ] Adapters for Svelte / Solid
+* [ ] More batching optimizations
+
+---
+
+## ⚡ License
+
+MIT © OpenReysin
