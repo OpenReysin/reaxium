@@ -1,6 +1,6 @@
 {
   "name": "@reaxium/core",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "description": "Framework-agnostic reactive state manager — Reaxium core",
   "type": "module",
   "main": "./dist/index.js",
