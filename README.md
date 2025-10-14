@@ -1,7 +1,7 @@
 # 🧠 Reaxium Monorepo
 
 > Reaxium is a **framework-agnostic reactive state management system**.  
-> Tiny, composable, and inspired by Nanostores, Jotai, and Vue reactivity.
+> Tiny and composable.
 
 This monorepo contains multiple packages:
 

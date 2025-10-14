@@ -2,24 +2,24 @@
   "name": "@reaxium/core",
   "version": "1.0.0",
   "description": "Framework-agnostic reactive state manager — Reaxium core",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": ["dist"],
   "scripts": {
     "build": "tsc",
     "dev": "vitest --watch",
-    "test": "vitest run"
+    "test": "vitest run",
+    "prepublishOnly": "npm run build"
   },
-  "keywords": [
-    "reactivity",
-    "state",
-    "store",
-    "vue",
-    "react",
-    "nanostores",
-    "jotai",
-    "reaxium"
-  ],
+  "keywords": ["reactivity", "state", "store", "vue", "react", "nanostores", "jotai", "reaxium"],
   "author": "OpenReysin",
   "license": "MIT",
   "devDependencies": {

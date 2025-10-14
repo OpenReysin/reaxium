@@ -1,4 +1,4 @@
-import { atom, Atom } from "./atom";
+import { atom, type Atom } from "./atom";
 
 export function computed<T>(fn: () => T, deps: Atom<any>[]): Atom<T> {
   const derived = atom(fn());
