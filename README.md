@@ -1,7 +1,3 @@
-<a href="https://reysin.fr">
-  <img align="right" width="92" height="92" title="Nano Stores logo" src="./assets/logo_reysin.png">
-</a>
-
 # 🧠 Reaxium Monorepo
 
 ---
