@@ -1,0 +1,111 @@
+name: Lint, Test, and Publish
+
+on:
+  push:
+  release:
+    types: [created]
+
+jobs:
+  setup:
+    name: Setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+
+  lint:
+    name: Lint
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run lint
+
+  build-core:
+    name: Build Core
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @reaxium/core run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: reaxium-core-build
+          path: packages/core/dist
+
+  type-check:
+    name: Type Check
+    needs: build-core
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - uses: actions/download-artifact@v4
+        with:
+          name: reaxium-core-build
+          path: packages/core/dist
+      - run: pnpm run check-types
+
+  test:
+    name: Test
+    needs: build-core
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - uses: actions/download-artifact@v4
+        with:
+          name: reaxium-core-build
+          path: packages/core/dist
+      - run: pnpm --filter @reaxium/core test
+      - run: pnpm --filter @reaxium/react test
+      - run: pnpm --filter @reaxium/vue test
+
+  publish-npm:
+    name: Publish to NPM
+    needs: [lint, type-check, test]
+    if: github.event_name == 'release' && github.event.action == 'created'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+          registry-url: https://registry.npmjs.org/
+      - run: pnpm install --frozen-lockfile
+      - uses: actions/download-artifact@v4
+        with:
+          name: reaxium-core-build
+          path: packages/core/dist
+      - run: pnpm --filter @reaxium/core publish --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      - run: pnpm --filter @reaxium/react publish --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      - run: pnpm --filter @reaxium/vue publish --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
