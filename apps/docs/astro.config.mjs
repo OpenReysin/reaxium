@@ -26,6 +26,10 @@ export default defineConfig({
               link: "/vue/",
             },
             {
+              label: "Demo",
+              link: "/demo/",
+            },
+            {
               label: "Made by Reysin",
               link: "https://reysin.fr",
               badge: "See our work",
@@ -64,6 +68,11 @@ export default defineConfig({
                 slug: "vue",
               },
             ],
+          },
+          {
+            label: "Demo",
+            link: "/demo/",
+            items: ["demo"],
           },
         ]),
       ],
