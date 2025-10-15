@@ -19,7 +19,6 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 
 <ContainerSection>
 
-
 ## What is Reaxium
 
 <CardGrid stagger>
@@ -37,4 +36,35 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 	</Card>
 </CardGrid>
 
+</ContainerSection>
+
+<ContainerSection>
+  ## Packages
+
+  <CardGrid>
+    <Card title="Core" icon="puzzle">
+      <p>
+        The core package provides the basic building blocks to create your own reactive state management solution.
+      </p>
+      <a href="/docs/core/intro" class="starlight-button starlight-button--primary">
+        Get Started
+      </a>
+    </Card>
+    <Card title="React" icon="seti:react">
+      <p>
+        The React adapter provides hooks and components to integrate Reaxium with React applications.
+      </p>
+      <a href="/docs/react/intro" class="starlight-button starlight-button--primary">
+        Get Started
+      </a>
+    </Card>
+    <Card title="Vue" icon="seti:vue">
+      <p>
+        The Vue adapter provides composables and components to integrate Reaxium with Vue applications.
+      </p>
+      <a href="/docs/vue/intro" class="starlight-button starlight-button--primary">
+        Get Started
+      </a>
+    </Card>
+  </CardGrid>
 </ContainerSection>
