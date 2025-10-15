@@ -102,6 +102,7 @@ function Counter() {
 * [ ] DevTools for reactive debugging
 * [ ] Adapters for Svelte / Solid
 * [ ] More batching optimizations
+* [ ] Add subscription only to key or deep key changes in atoms
 
 ---
 
