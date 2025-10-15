@@ -1,7 +1,7 @@
 {
   "name": "@reaxium/react",
   "version": "0.1.0-alpha.5",
-  "description": "Framework-agnostic reactive state manager — Reaxium core",
+  "description": "React bindings for Reaxium",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
