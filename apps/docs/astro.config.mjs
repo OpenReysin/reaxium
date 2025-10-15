@@ -76,7 +76,7 @@ export default defineConfig({
           },
         ]),
       ],
-      title: "Reaxium - The small reactive state management library",
+      title: "Reaxium",
       social: [
         {
           icon: "github",
