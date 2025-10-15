@@ -1,6 +1,5 @@
 # 🧠 Reaxium
 
-![NPM Version](https://img.shields.io/npm/v/%40reaxium%2Fcore)
 ![NPM Last Update](https://img.shields.io/npm/last-update/%40reaxium%2Fcore)
 ![NPM Downloads](https://img.shields.io/npm/dw/%40reaxium%2Fcore)
 ![NPM Type Definitions](https://img.shields.io/npm/types/%40reaxium%2Fcore)
@@ -18,26 +17,6 @@
 <img src="https://github.com/OpenReysin/.github/raw/main/logo.png" alt="" width="30" height="30" />  Made at <b><a href="https://reysin.fr">Reysin</a></b>, <b>software creation</b>, <b>consulting</b>, and <b>digitalisation</b>.
 
 ---
-
-This monorepo contains multiple packages:
-
-```
-
-reaxium/
-├── packages/
-│   ├── core/       # Core reactive state engine (atoms, computed, watch, batch)
-│   ├── vue/        # Vue adapter
-│   └── react/      # React adapter
-├── package.json    # Monorepo root (workspace)
-└── tsconfig.json   # Shared TypeScript config
-
-````
-
----
-
-## 📦 Packages
-
-### 1. `@reaxium/core`
 
 - Framework-agnostic reactive state primitives
 - Core features:
@@ -62,47 +41,6 @@ batch(() => {
 ````
 
 ---
-
-### 2. `@reaxium/vue`
-
-* Vue 3 adapter using `ref` and `onUnmounted`
-* Usage:
-
-```ts
-import { atom } from "@reaxium/core";
-import { useStore } from "@reaxium/vue";
-
-const count = atom(0);
-const countRef = useStore(count);
-```
-
----
-
-### 3. `@reaxium/react`
-
-* React adapter using `useSyncExternalStore`
-* Usage:
-
-```ts
-import { atom } from "@reaxium/core";
-import { useStore } from "@reaxium/react";
-
-const count = atom(0);
-function Counter() {
-  const value = useStore(count);
-  return <button onClick={() => count.set(value + 1)}>Count: {value}</button>;
-}
-```
-
----
-
-## 🔮 Roadmap
-
-* [ ] Async atoms / derived stores
-* [ ] Middleware support (logging, persistence)
-* [ ] DevTools for reactive debugging
-* [ ] Adapters for Svelte / Solid
-* [ ] More batching optimizations
 
 ---
 
