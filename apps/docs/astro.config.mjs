@@ -25,6 +25,11 @@ export default defineConfig({
               label: "VueJS",
               link: "/vue/",
             },
+            {
+              label: "Made by Reysin",
+              link: "https://reysin.fr",
+              badge: "See our work",
+            },
           ],
           footerText:
             "Developped & maintained by [Reysin](https://reysin.fr). ",
