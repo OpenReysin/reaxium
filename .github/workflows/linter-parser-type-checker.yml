@@ -11,7 +11,23 @@ jobs:
         - uses: actions/setup-node@v4
           with:
             cache: 'pnpm'
+
+    install:
+      runs-on: ubuntu-latest
+      steps:
         - run: pnpm install --frozen-lockfile
+
+    lint:
+      runs-on: ubuntu-latest
+      steps:
         - run: pnpm run lint
+
+    check-types:
+      runs-on: ubuntu-latest
+      steps:
         - run: pnpm run check-types
+
+    test:
+      runs-on: ubuntu-latest
+      steps:
         - run: pnpm run test
