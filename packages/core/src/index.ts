@@ -1,5 +1,10 @@
-export type { Atom } from "./atom";
+export type { Atom, Listener } from "./atom";
 export { atom } from "./atom";
 export { batch } from "./batch";
 export { computed } from "./computed";
+export { LocalStorageSystem } from "./storage/localStorageSystem";
+export { MemoryStorageSystem } from "./storage/memoryStorageSystem";
+export type { StorageFactory } from "./storage/storageFactory";
+export { createStorage } from "./storage/storageFactory";
+export type { StorageSystem } from "./storage/storageSystem";
 export { watch } from "./watch";

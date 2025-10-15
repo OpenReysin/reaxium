@@ -20,14 +20,17 @@ export default defineConfig({
             {
               label: "React",
               link: "/react",
+              badge: "WIP",
             },
             {
               label: "VueJS",
               link: "/vue/",
+              badge: "WIP",
             },
             {
               label: "Demo",
               link: "/demo/",
+              badge: "WIP",
             },
             {
               label: "Made by Reysin",
@@ -47,6 +50,12 @@ export default defineConfig({
                 label: "Starting",
                 autogenerate: {
                   directory: "core/intro",
+                },
+              },
+              {
+                label: "API Reference",
+                autogenerate: {
+                  directory: "core/reference",
                 },
               },
             ],
