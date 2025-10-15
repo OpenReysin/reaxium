@@ -1,4 +1,7 @@
-type Listener<T> = (value: T) => void;
+import { MemoryStorageSystem } from "./storage/memoryStorageSystem";
+import type { StorageFactory } from "./storage/storageFactory";
+
+export type Listener<T> = (value: T) => void;
 
 export interface Atom<T> {
   get(): T;
@@ -6,23 +9,15 @@ export interface Atom<T> {
   subscribe(listener: Listener<T>): () => void;
 }
 
-export function atom<T>(initial: T): Atom<T> {
-  let value = initial;
-  const listeners = new Set<Listener<T>>();
+export function atom<T>(
+  initial: T,
+  storageFactory: StorageFactory<T> = MemoryStorageSystem,
+): Atom<T> {
+  const storage = storageFactory(initial);
 
-  const get = () => value;
-
-  const set = (newValue: T) => {
-    if (Object.is(newValue, value)) return;
-    value = newValue;
-    for (const listener of listeners) listener(value);
-  };
-
-  const subscribe = (listener: Listener<T>) => {
-    listeners.add(listener);
-    listener(value);
-    return () => listeners.delete(listener);
-  };
+  const get = () => storage.get();
+  const set = (newValue: T) => storage.set(newValue);
+  const subscribe = (listener: Listener<T>) => storage.subscribe(listener);
 
   return { get, set, subscribe };
 }
