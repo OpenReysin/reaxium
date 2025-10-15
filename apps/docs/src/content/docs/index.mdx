@@ -19,35 +19,60 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 
 <ContainerSection>
 
-## What is Reaxium
+  ## What is Reaxium
 
-<CardGrid stagger>
-	<Card title="Composable" icon="pencil">
-        Build your own reactive state management solution with simple atomic primitives.
-	</Card>
-	<Card title="Open Source" icon="add-document">
-        Reaxium is 100% open source and free to use under the MIT license.
-	</Card>
-	<Card title="Framework Agnostic" icon="setting">
-        Use Reaxium with any framework or library, or even without one.
-	</Card>
-	<Card title="TypeScript" icon="seti:typescript">
-        Built with TypeScript, Reaxium provides type definitions out of the box.
-	</Card>
-</CardGrid>
+  <CardGrid stagger>
+    <Card title="Composable & Lightweight" icon="pencil">
+      Build your own **reactive state management** solution with simple **atomic primitives**. No bloat, just the essentials.
+    </Card>
+    <Card title="100% Open Source" icon="add-document">
+      Reaxium is **MIT-licensed** and free to use. Contribute on [GitHub](https://github.com/OpenReysin/reaxium).
+    </Card>
+    <Card title="Framework Agnostic" icon="setting">
+      Works with **Vue, React, Svelte, or vanilla JS**. No framework lock-in.
+    </Card>
+    <Card title="TypeScript Support" icon="seti:typescript">
+      Built with **TypeScript**, Reaxium provides **type definitions** out of the box for a better developer experience.
+    </Card>
+  </CardGrid>
+
 
 </ContainerSection>
+
+---
+
+<ContainerSection>
+  ## Frequently Asked Questions
+  <details>
+    <summary>Is Reaxium compatible with Vue 3?</summary>
+    Yes! Reaxium provides a dedicated Vue adapter with composables for Vue 3.
+  </details>
+  <details>
+    <summary>Does Reaxium work with React?</summary>
+    Absolutely. The React adapter includes hooks for easy integration.
+  </details>
+  <details>
+    <summary>Is Reaxium lightweight?</summary>
+    Reaxium is designed to be small and fast, with minimal overhead.
+  </details>
+  <details>
+    <summary>Is Reaxium open source?</summary>
+    Yes, Reaxium is MIT-licensed and free to use.
+  </details>
+</ContainerSection>
+
+---
 
 <ContainerSection>
   ## Packages
 
-  <CardGrid>
+  <CardGrid stagger>
     <Card title="Core" icon="puzzle">
       <p>
         The core package provides the basic building blocks to create your own reactive state management solution.
       </p>
       <a href="/docs/core/intro" class="starlight-button starlight-button--primary">
-        Get Started
+        View on NPM
       </a>
     </Card>
     <Card title="React" icon="seti:react">
@@ -55,7 +80,7 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
         The React adapter provides hooks and components to integrate Reaxium with React applications.
       </p>
       <a href="/docs/react/intro" class="starlight-button starlight-button--primary">
-        Get Started
+        View on NPM
       </a>
     </Card>
     <Card title="Vue" icon="seti:vue">
@@ -63,7 +88,7 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
         The Vue adapter provides composables and components to integrate Reaxium with Vue applications.
       </p>
       <a href="/docs/vue/intro" class="starlight-button starlight-button--primary">
-        Get Started
+        View on NPM
       </a>
     </Card>
   </CardGrid>
