@@ -4,4 +4,4 @@ Disallow: /nogooglebot/
 User-agent: *
 Allow: /
 
-Sitemap: https://refactoring-is-my-business.com//sitemap-index.xml
+Sitemap: https://reaxium.reysin.fr/sitemap-index.xml
