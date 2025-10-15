@@ -1,5 +1,5 @@
 {
-  "name": "vue",
+  "name": "@reaxium/vue",
   "version": "0.1.0-alpha.2",
   "description": "",
   "main": "index.js",
@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "vue": "^3.5.22",
-    "@reaxium/core": "^0.1.0-alpha.1"
+    "@reaxium/core": "workspace:*"
   }
 }

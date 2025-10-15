@@ -51,8 +51,8 @@ importers:
   packages/react:
     dependencies:
       '@reaxium/core':
-        specifier: ^0.1.0-alpha.1
-        version: 0.1.0-alpha.1
+        specifier: workspace:*
+        version: link:../core
       react:
         specifier: ^19.2.0
         version: 19.2.0
@@ -64,8 +64,8 @@ importers:
   packages/vue:
     dependencies:
       '@reaxium/core':
-        specifier: ^0.1.0-alpha.1
-        version: 0.1.0-alpha.1
+        specifier: workspace:*
+        version: link:../core
       vue:
         specifier: ^3.5.22
         version: 3.5.22(typescript@5.9.2)
@@ -618,9 +618,6 @@ packages:
     resolution: {integrity: sha512-NkT+YAdgS2FPCn8mIA9bQhiBs+xmniMGq1LFPDhcFn0+2yIUEiIG06t7bsZlhdjknEQRTSdT7YitP6fC5qwP0g==}
     cpu: [x64]
     os: [win32]
-
-  '@reaxium/core@0.1.0-alpha.1':
-    resolution: {integrity: sha512-Gk1dsAge32dC3YiUgS9WZQ0OYdnPjvYtK8mAz6SY2tAAiJe0Cvs8S8yIIXpw9VnOyQCFzBuWJpWNXrXO4NKInw==}
 
   '@rollup/pluginutils@5.3.0':
     resolution: {integrity: sha512-5EdhGZtnu3V88ces7s53hhfK5KSASnJZv8Lulpc04cWO3REESroJXg73DFsOmgbU2BhwV0E20bu2IDZb3VKW4Q==}
@@ -2789,8 +2786,6 @@ snapshots:
 
   '@pagefind/windows-x64@1.4.0':
     optional: true
-
-  '@reaxium/core@0.1.0-alpha.1': {}
 
   '@rollup/pluginutils@5.3.0(rollup@4.52.4)':
     dependencies:
