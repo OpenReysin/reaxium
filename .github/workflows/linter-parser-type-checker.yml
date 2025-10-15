@@ -15,6 +15,19 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile
 
+  build-core:
+    name: Build Core
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @reaxium/core run build
+
   lint:
     name: Lint
     needs: setup
@@ -30,7 +43,7 @@ jobs:
 
   type-check:
     name: Type Check
-    needs: setup
+    needs: build-core
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -43,7 +56,7 @@ jobs:
 
   test:
     name: Test
-    needs: setup
+    needs: build-core
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
