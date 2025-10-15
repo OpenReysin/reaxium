@@ -53,6 +53,12 @@ export default defineConfig({
                 },
               },
               {
+                label: "Guides",
+                autogenerate: {
+                  directory: "core/guides",
+                },
+              },
+              {
                 label: "API Reference",
                 autogenerate: {
                   directory: "core/reference",
