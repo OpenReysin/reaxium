@@ -1,6 +1,5 @@
-import { describe, it, expect, vi } from "vitest";
-import { atom } from "../src";
-import { computed } from "../src";
+import { describe, expect, it, vi } from "vitest";
+import { atom, computed } from "../src";
 
 describe("computed", () => {
   it("should compute derived values", () => {

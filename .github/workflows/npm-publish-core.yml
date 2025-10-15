@@ -18,6 +18,8 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile
       - run: pnpm --filter @reaxium/core test
+      - run: pnpm --filter @reaxium/react test
+      - run: pnpm --filter @reaxium/vue test
 
   publish-npm:
     needs: build
@@ -31,5 +33,11 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: pnpm install --frozen-lockfile
       - run: pnpm --filter @reaxium/core publish --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      - run: pnpm --filter @reaxium/react publish --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+      - run: pnpm --filter @reaxium/vue publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}

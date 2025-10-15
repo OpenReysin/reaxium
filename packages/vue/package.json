@@ -1,16 +1,51 @@
 {
   "name": "@reaxium/vue",
-  "version": "0.1.0-alpha.2",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "version": "0.1.0-alpha.4",
+  "description": "Framework-agnostic reactive state manager — Reaxium core",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "vitest --watch",
+    "test": "vitest run",
+    "prepublishOnly": "npm run build",
+    "check-types": "tsc --noEmit"
+  },
+  "keywords": [
+    "reactivity",
+    "state",
+    "store",
+    "vue",
+    "react",
+    "nanostores",
+    "jotai",
+    "reaxium"
+  ],
+  "author": "OpenReysin",
+  "license": "MIT",
   "dependencies": {
     "vue": "^3.5.22",
     "@reaxium/core": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "vitest": "^1.6.0"
+  },
+  "homepage": "https://reaxium.reysin.fr/",
+  "repository": {
+    "url": "https://github.com/OpenReysin/reaxium"
   }
 }
